@@ -34,7 +34,7 @@ $access_points = array_column($unifi_connection->list_devices(), 'name', 'mac');
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th>Device Name</th>
+                <th>Device Name & Make</th>
                 <th>Access Point</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -43,7 +43,10 @@ $access_points = array_column($unifi_connection->list_devices(), 'name', 'mac');
             <tbody>
             <?php foreach ($guests as $guest): ?>
                 <tr>
-                    <td><?php echo $guest->hostname; ?></td>
+                    <td>
+                        <?php echo $guest->hostname ?? "No Device Name"; ?><br/>
+                        <?php echo $guest->oui ?? "No Device Manufacturer"; ?>
+                    </td>
                     <td><?php echo $access_points[$guest->ap_mac]; ?> </td>
                     <td><?php echo ($guest->authorized) ? 'Authorised' : 'Not Authorised'; ?></td>
                     <td>
