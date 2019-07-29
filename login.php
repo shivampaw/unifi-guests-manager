@@ -13,7 +13,7 @@ $password = null;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST["password"])) {
         $password = $_POST["password"];
-        if ($password == getenv("AUTH_PASSWORD")) {
+        if ($password == getenv("LOGIN_PASSWORD")) {
             $_SESSION["authenticated"] = true;
             header('Location: index.php');
         } else {
