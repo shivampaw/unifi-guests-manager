@@ -22,6 +22,9 @@ $access_points = array_column($unifi_connection->list_devices(), 'name', 'mac');
 
     <!-- Bootstrap core CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
 
 <body class="my-3 text-center">
@@ -31,7 +34,7 @@ $access_points = array_column($unifi_connection->list_devices(), 'name', 'mac');
         <a href="logout.php">Logout</a>
     </p>
     <div class="table-responsive">
-        <table class="table table-striped table-bordered">
+        <table id="table" class="table table-striped table-bordered">
             <thead>
             <tr>
                 <th>Device Name & Make</th>
@@ -69,6 +72,15 @@ $access_points = array_column($unifi_connection->list_devices(), 'name', 'mac');
         </table>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            paging: false
+        });
+    });
+</script>
 </body>
 </html>
 
